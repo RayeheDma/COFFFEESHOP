@@ -1,3 +1,4 @@
+
 from django.db import models
 
 import datetime
@@ -22,14 +23,14 @@ class Product (models.Model) :
     name = models.CharField(max_length=50)
     description = models.CharField (max_length=250 , default='', blank=True)
     price= models.DecimalField (default=0, decimal_places=2 , max_digits=12)
-    category= models.ForeignKey(Category, on_delete= models.CASCADE ,default= 1)
+    category= models.ForeignKey(Category, on_delete= models.CASCADE )
     pictur= models.ImageField(upload_to="upload/products/")
 
 
 
     def __str__(self):
       return self.name
-
+    
 class Order(models.Model) :
        product = models.ForeignKey(Product, on_delete= models.CASCADE)
        Customer= models.ForeignKey(Customer, on_delete= models.CASCADE)
@@ -38,6 +39,6 @@ class Order(models.Model) :
        phone= models.CharField(max_length=20, blank=True)
        date= models.DateField(default=datetime.datetime.today())
        status= models.BooleanField(default=False)
-
+   
        def __str__(self):
         return self.name

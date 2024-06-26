@@ -16,21 +16,23 @@
                 {% endif %}
                 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">فروشگاه</a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="{% url 'home' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">فروشگاه</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">همه محصولات</a></li>
+                        <li><a class="dropdown-item" href="{% url 'home' %}">همه محصولات</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">محصولات پر بازدید</a></li>
-                        <li><a class="dropdown-item" href="#!">محصولات جدید</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category' 'نوشیدنی' %}">نوشیدنی های گرم</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category' 'نوشیدنی' %}">نوشیدنی های سرد</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category' 'کیک' %}">کیک ها</a></li>
                     </ul>
                 </li>
             </ul>
             <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">
+                <a href={% url 'cart_summary' %} class="btn btn-outline-dark">
                     <i class="bi-cart-fill me-1"></i>
                     سبد خرید
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
+                </a>
+
             </form>
         </div>
     </div>

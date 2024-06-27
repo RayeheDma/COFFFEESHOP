@@ -22,6 +22,15 @@
               <p class="card-text">💰 قیمت:{{product.price | intcomma}}</p>
 
               {% endif %}
+
+              تعداد:
+              <select class="form-select" id='cart-qty'>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="3">4</option>
+              </select>
+
               <br><br>
               <button class='btn btn-secondary' type='button' value='{{ product.id }}' id='add-cart'>اضافه کردن به سبد خرید</button>
                 <a href="{% url 'home' %}" class='btn btn-secondary'>بازگشت به صفحه اصلی</a>
@@ -36,9 +45,10 @@
     e.preventDefault();
     $.ajax({
     type: 'POST',
-    url: '{% url 'cart_add' %}'
+    url: '{% url 'cart_add' %}',
     data:{
-      product.id : $('#add-cart').val(),
+      product_id : $('#add-cart').val(),
+      product_qty : $('#cart-qty option:selected').text(),
       csrfmiddlewaretoken: '{{ csrf_token }}',
       action : 'post'
     },
